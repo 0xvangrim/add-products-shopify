@@ -9,6 +9,23 @@ function Index() {
   const [modal, setModal] = useState({ open: false });
   const emptyState = !store.get("ids");
 
+
+
+  function handleSelection(resources) {
+    const idsFromResources = resources.selection.map((products) => products.id);
+    setModal({ open: false });
+    store.set("ids", idsFromResources);
+
+    const selectedProducts = resources.selection;
+
+    deleteApiData()
+
+    selectedProducts.map(product => makeApiCall(product));
+
+
+  }
+
+
   async function makeApiCall(products) {
     const url = '/api/products';
 
@@ -17,16 +34,9 @@ function Index() {
     .catch(error => console.error(error))
 }
 
-
-  function handleSelection(resources) {
-      console.log('RESOURCES',resources)
-    const idsFromResources = resources.selection.map((products) => products.id);
-    setModal({ open: false });
-    store.set("ids", idsFromResources);
-
-    const selectedProducts = resources.selection;
-    selectedProducts.map(product => makeApiCall(product));
-
+   async function deleteApiData() {
+      const url = '/api/products';
+      axios.delete(url)
   }
 
 

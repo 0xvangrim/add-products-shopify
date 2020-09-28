@@ -24,7 +24,7 @@ const router = new KoaRouter();
 const server = new Koa();
 
 // Can be replaced with a real database
-const products = [
+let products = [
   {
     'image1': 'test'
   }
@@ -53,6 +53,15 @@ router.post("/api/products", koaBody(), async(ctx) => {
    } catch(error) {
      console.error(error)
    }
+})
+
+router.delete("/api/products", koaBody(), async(ctx) => {
+  try {
+    products = []
+    ctx.body = "All Items Deleted"
+  } catch(error) {
+    console.error(error)
+  }
 })
 
 app.prepare().then(() => {
