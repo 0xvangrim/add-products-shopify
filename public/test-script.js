@@ -28,13 +28,25 @@ function handler() {
 
   const makeApp = products => {
       const bestSellerContainer = $(
-          `<div>
+          `<div style="overflow-y: scroll;">
           <h3>Our Best Sellers</h3>
+          ${products.map(item => {
+              return `
+              <a href="/products/${item.handle}" style="display: flex; align-items: center; padding: 20px 10px; border-top: 1px solid black;">
+              <img src=${item.images[0].originalSrc} style="width: 75px;"/>
+              <div style="display: flex; justify-content: space-between; align-items: start; width: 100%;">
+              <p style="padding: 0 10px;">${item.title}</p>
+              <p>${item.variants[0].price}
+              </div>
+              </a>
+              `
+          }).join('')}
           </div>`
       )
       .css({
           'position': 'fixed',
           'background-color': '#ffffff',
+          'padding': '10px',
           'border': '1px solid black',
           'bottom': '80px',
           'right': '25px',
@@ -64,7 +76,9 @@ function handler() {
     "https://cors-anywhere.herokuapp.com/https://f8a5f170254e.ngrok.io/api/products?shop=sample-test-store-for-script-api.myshopify.com/"
   )
     .then((res) => res.json())
-    .then((data) =>  
-    makeApp(data.data))
+    .then((data) =>  {
+    makeApp(data.data)
+    console.log(data)
+    })
     .catch((error) => console.error(error));
 }
