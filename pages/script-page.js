@@ -75,7 +75,7 @@ function ScriptTags() {
                 createScripts({
                   variables: {
                     input: {
-                      src: "https://f8a5f170254e.ngrok.io/test-script.js",
+                      src: "https://enigmatic-sea-08945.herokuapp.com/test-script.js",
                       displayScope: "ALL",
                     },
                   },

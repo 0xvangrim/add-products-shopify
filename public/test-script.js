@@ -28,7 +28,7 @@ function handler() {
 
   const makeApp = products => {
       const bestSellerContainer = $(
-          `<div style="overflow-y: scroll;">
+          `<div style="overflow-y: scroll;"g>
           <h3>Our Best Sellers</h3>
           ${products.map(item => {
               return `
@@ -73,7 +73,7 @@ function handler() {
   }
 
   fetch(
-    "https://cors-anywhere.herokuapp.com/https://f8a5f170254e.ngrok.io/api/products?shop=sample-test-store-for-script-api.myshopify.com/"
+    "https://cors-anywhere.herokuapp.com/https://enigmatic-sea-08945.herokuapp.com/api/products?shop=sample-test-store-for-script-api.myshopify.com/"
   )
     .then((res) => res.json())
     .then((data) =>  {
