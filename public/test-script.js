@@ -79,6 +79,7 @@ function handler() {
     .then((data) =>  {
     makeApp(data.data)
     console.log(data)
+    console.log(data)
     })
     .catch((error) => console.error(error));
 }
