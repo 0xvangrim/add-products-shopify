@@ -7,7 +7,7 @@ const dotenv = require("dotenv");
 const { verifyRequest } = require("@shopify/koa-shopify-auth");
 const session = require("koa-session");
 const koaBody = require('koa-body');
-const serve = require('koa-static');
+// const serve = require('koa-static');
 
 dotenv.config();
 
@@ -24,9 +24,9 @@ const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY } = process.env;
 const router = new KoaRouter();
 const server = new Koa();
 
-const staticDirPath = path.join(__dirname, 'public')
+//const staticDirPath = path.join(__dirname, 'public')
 
-server.use(serve(staticDirPath))
+// server.use(serve(staticDirPath))
 // Can be replaced with a real database
 let products = [
   {
